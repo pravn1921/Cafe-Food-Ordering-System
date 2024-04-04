@@ -27,8 +27,8 @@ export default function Home() {
           <div className="text-gray-500 ml-8 font-sans text-lg flex flex-col gap-y-8 text-justify mt-16">
             <p className="indent-14">
               Welcome to Blue Forest Cafe, where we offer a delectable array of starters, cakes, juices, and other delicious treats to satisfy your
-              cravings. Our menu is carefully curated to include a variety of options to suit all tastes and preferences. Whether you're in the mood
-              for a savory starter to kick off your meal, a decadent slice of cake for a sweet treat, or a refreshing juice to quench your thirst, we've
+              cravings. Our menu is carefully curated to include a variety of options to suit all tastes and preferences. Whether you&apos;re in the mood
+              for a savory starter to kick off your meal, a decadent slice of cake for a sweet treat, or a refreshing juice to quench your thirst, we&apos;ve
               got you covered. Our products are made with the finest ingredients and crafted with love and care to ensure a truly delightful dining experience.
               Order from Blue Forest Cafe online and let us bring the flavors of our cafe right to your doorstep. Enjoy a taste of our culinary creations today!
             </p>

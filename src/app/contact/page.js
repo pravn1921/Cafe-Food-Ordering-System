@@ -55,7 +55,7 @@ export default function ContactPage() {
                                 <textarea name='message' placeholder='Drop your message...' className='w-full border-2 border-primary rounded-t-3xl py-7 pl-3 pt-3'/>
                             </div>
                             <button className='flex items-center max-w-[160px] bg-primary text-white rounded-3xl font-sans py-3 font-bold border-2 border-gray-300 hover:scale-105'>
-                                Let's Talk
+                                Let&apos;s Talk
                                 <ArrowRightIcon size={22} />
                             </button>
                         </form>
