@@ -9,6 +9,7 @@ import Link from "next/link";
 import {redirect} from "next/navigation";
 import {useState} from "react";
 import toast from "react-hot-toast";
+import { MutatingDots } from "react-loader-spinner";
 
 export default function NewMenuItemPage() {
 
@@ -43,7 +44,19 @@ export default function NewMenuItemPage() {
   }
 
   if (loading) {
-    return 'Loading user info...';
+    return <div className="h-96 flex items-center justify-center ">
+    <MutatingDots
+    visible={true}
+    height="100"
+    width="100"
+    color="#0074B7"
+    secondaryColor="#0074B7"
+    radius="12"
+    ariaLabel="mutating-dots-loading"
+    wrapperStyle={{}}
+    wrapperClass=""
+  />
+    </div>;
   }
 
   if (!data.admin) {
@@ -53,10 +66,10 @@ export default function NewMenuItemPage() {
   return (
     <section className="mt-8">
       <UserTabs isAdmin={true} />
-      <div className="max-w-2xl mx-auto mt-8">
-        <Link href={'/menu-items'} className="button">
-          <Left />
-          <span>Show all menu items</span>
+      <div className="w-96 mx-auto mt-8">
+        <Link href={'/menu-items'} className="rounded-full flex gap-x-3 py-3 font-sans font-bold text-lg bg-primary text-white justify-center border-2 border-gray-300
+          hover:scale-105 duration-300">
+          <span className="text-white">All Menu Items</span>
         </Link>
       </div>
       <MenuItemForm menuItem={null} onSubmit={handleFormSubmit} />

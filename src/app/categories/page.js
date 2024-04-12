@@ -1,15 +1,16 @@
 'use client';
 import DeleteButton from "@/components/DeleteButton";
 import UserTabs from "@/components/layout/UserTabs";
-import {useEffect, useState} from "react";
-import {useProfile} from "@/components/UseProfile";
+import { useEffect, useState } from "react";
+import { useProfile } from "@/components/UseProfile";
 import toast from "react-hot-toast";
+import { MutatingDots } from "react-loader-spinner";
 
 export default function CategoriesPage() {
 
   const [categoryName, setCategoryName] = useState('');
   const [categories, setCategories] = useState([]);
-  const {loading:profileLoading, data:profileData} = useProfile();
+  const { loading: profileLoading, data: profileData } = useProfile();
   const [editedCategory, setEditedCategory] = useState(null);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ export default function CategoriesPage() {
   async function handleCategorySubmit(ev) {
     ev.preventDefault();
     const creationPromise = new Promise(async (resolve, reject) => {
-      const data = {name:categoryName};
+      const data = { name: categoryName };
       if (editedCategory) {
         data._id = editedCategory._id;
       }
@@ -46,8 +47,8 @@ export default function CategoriesPage() {
     });
     await toast.promise(creationPromise, {
       loading: editedCategory
-                 ? 'Updating category...'
-                 : 'Creating your new category...',
+        ? 'Updating category...'
+        : 'Creating your new category...',
       success: editedCategory ? 'Category updated' : 'Category created',
       error: 'Error, sorry...',
     });
@@ -55,7 +56,7 @@ export default function CategoriesPage() {
 
   async function handleDeleteClick(_id) {
     const promise = new Promise(async (resolve, reject) => {
-      const response = await fetch('/api/categories?_id='+_id, {
+      const response = await fetch('/api/categories?_id=' + _id, {
         method: 'DELETE',
       });
       if (response.ok) {
@@ -75,7 +76,19 @@ export default function CategoriesPage() {
   }
 
   if (profileLoading) {
-    return 'Loading user info...';
+    return <div className="h-96 flex items-center justify-center ">
+      <MutatingDots
+        visible={true}
+        height="100"
+        width="100"
+        color="#0074B7"
+        secondaryColor="#0074B7"
+        radius="12"
+        ariaLabel="mutating-dots-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+      />
+    </div>;
   }
 
   if (!profileData.admin) {
@@ -95,8 +108,8 @@ export default function CategoriesPage() {
               )}
             </label>
             <input type="text"
-                   value={categoryName}
-                   onChange={ev => setCategoryName(ev.target.value)}
+              value={categoryName}
+              onChange={ev => setCategoryName(ev.target.value)}
             />
           </div>
           <div className="pb-2 flex gap-2">
@@ -126,11 +139,11 @@ export default function CategoriesPage() {
             </div>
             <div className="flex gap-2">
               <button type="button"
-                      className="rounded-full bg-green-200 hover:bg-green-300 border-2 border-gray-200"
-                      onClick={() => {
-                        setEditedCategory(c);
-                        setCategoryName(c.name);
-                      }}
+                className="rounded-full bg-green-400 hover:bg-green-500 border-2 border-gray-200 text-white"
+                onClick={() => {
+                  setEditedCategory(c);
+                  setCategoryName(c.name);
+                }}
               >
                 Edit
               </button>

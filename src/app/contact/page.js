@@ -26,7 +26,7 @@ export default function ContactPage() {
                             <MailIcon size={18} className='text-primary' />
                             <div>blueforestmdu@gmail.com</div>
                         </div>
-                        {/* address */}
+                        {/* address */} 
                         <div className="flex items-center gap-x-8">
                             <HomeIcon size={18} className='text-primary' />
                             <div>Madurai, Tamil Nadu</div>
@@ -43,7 +43,7 @@ export default function ContactPage() {
                         <Image src={'/ill2.jpg'} width={650} height={650} className='ml-32' />
                     </div>
                     <div className='mt-12 w-[650px] ml-32'>
-                        <form method='POST' action="" className="flex flex-col gap-y-4">
+                        <form method='POST' action="https://getform.io/f/pbygepkb" className="flex flex-col gap-y-4">
                             {/* input */}
                             <div className="flex items-center">
                                 <input name='name' id='name' placeholder='Name' className='w-full border-2 border-primary rounded-full py-2.5 pl-3' />                            </div>

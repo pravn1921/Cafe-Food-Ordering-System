@@ -9,6 +9,8 @@ import Link from "next/link";
 import {redirect, useParams} from "next/navigation";
 import {useEffect, useState} from "react";
 import toast from "react-hot-toast";
+import Loading from "../../../../components/layout/Loading";
+import { MutatingDots } from "react-loader-spinner";
 
 export default function EditMenuItemPage() {
 
@@ -43,7 +45,7 @@ export default function EditMenuItemPage() {
     });
 
     await toast.promise(savingPromise, {
-      loading: 'Saving this tasty item',
+      loading: 'Saving..',
       success: 'Saved',
       error: 'Error',
     });
@@ -76,7 +78,19 @@ export default function EditMenuItemPage() {
   }
 
   if (loading) {
-    return 'Loading user info...';
+    return <div className="h-96 flex items-center justify-center ">
+    <MutatingDots
+    visible={true}
+    height="100"
+    width="100"
+    color="#0074B7"
+    secondaryColor="#0074B7"
+    radius="12"
+    ariaLabel="mutating-dots-loading"
+    wrapperStyle={{}}
+    wrapperClass=""
+  />
+    </div>;
   }
 
   if (!data.admin) {
@@ -86,17 +100,17 @@ export default function EditMenuItemPage() {
   return (
     <section className="mt-8">
       <UserTabs isAdmin={true} />
-      <div className="max-w-2xl mx-auto mt-8">
-        <Link href={'/menu-items'} className="button">
-          <Left />
-          <span>Show all menu items</span>
+      <div className="w-96 mx-auto mt-8">
+        <Link href={'/menu-items'} className="rounded-full flex gap-x-3 py-3 font-sans font-bold text-lg bg-primary text-white justify-center border-2 border-gray-300
+          hover:scale-105 duration-300">
+          <span>All Menu Items</span>
         </Link>
       </div>
       <MenuItemForm menuItem={menuItem} onSubmit={handleFormSubmit} />
       <div className="max-w-md mx-auto mt-2">
-        <div className="max-w-xs ml-auto pl-4">
+        <div className="w-52 pl-8">
           <DeleteButton
-            label="Delete this menu item"
+            label="Delete"
             onDelete={handleDeleteClick}
           />
         </div>

@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {useEffect, useState} from "react";
 import { FaArrowAltCircleRight } from "react-icons/fa";
+import { MutatingDots } from "react-loader-spinner";
 
 export default function MenuItemsPage() {
 
@@ -21,7 +22,19 @@ export default function MenuItemsPage() {
   }, []);
 
   if (loading) {
-    return 'Loading user info...';
+    return <div className="h-96 flex items-center justify-center ">
+    <MutatingDots
+    visible={true}
+    height="100"
+    width="100"
+    color="#0074B7"
+    secondaryColor="#0074B7"
+    radius="12"
+    ariaLabel="mutating-dots-loading"
+    wrapperStyle={{}}
+    wrapperClass=""
+  />
+    </div>;
   }
 
   if (!data.admin) {

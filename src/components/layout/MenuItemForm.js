@@ -32,47 +32,47 @@ export default function MenuItemForm({onSubmit,menuItem}) {
           image,name,description,basePrice,sizes,extraIngredientPrices,category,
         })
       }
-      className="mt-8 max-w-2xl mx-auto">
+      className="mt-8 w-96 mx-auto">
       <div
-        className="md:grid items-start gap-4"
+        className="items-start gap-4"
         style={{gridTemplateColumns:'.3fr .7fr'}}>
-        <div className="rounded-lg">
+        <div className="rounded-lg w-44 mx-auto">
           <EditableImage link={image} setLink={setImage} />
         </div>
         <div className="grow">
-          <label>Item name</label>
+          <label className="py-2 inline-flex items-center gap-2 font-semibold">Name</label>
           <input
             type="text"
             value={name}
             onChange={ev => setName(ev.target.value)}
           />
-          <label>Description</label>
+          <label className="py-2 inline-flex items-center gap-2 font-semibold">Description</label>
           <input
             type="text"
             value={description}
             onChange={ev => setDescription(ev.target.value)}
           />
-          <label>Category</label>
+          <label className="py-2 inline-flex items-center gap-2 font-semibold">Category</label>
           <select value={category} onChange={ev => setCategory(ev.target.value)}>
             {categories?.length > 0 && categories.map(c => (
               <option key={c._id} value={c._id}>{c.name}</option>
             ))}
           </select>
-          <label>Base price</label>
+          <label className="py-2 inline-flex items-center gap-2 font-semibold">Base price</label>
           <input
             type="text"
             value={basePrice}
             onChange={ev => setBasePrice(ev.target.value)}
           />
           <MenuItemPriceProps name={'Sizes'}
-                              addLabel={'Add item size'}
+                              addLabel={'Add Sizes'}
                               props={sizes}
                               setProps={setSizes} />
           <MenuItemPriceProps name={'Extra ingredients'}
-                              addLabel={'Add ingredients prices'}
+                              addLabel={'Add Ingredients'}
                               props={extraIngredientPrices}
                               setProps={setExtraIngredientPrices}/>
-          <button type="submit">Save</button>
+          <button type="submit" className="w-44 rounded-full mt-4">Save</button>
         </div>
       </div>
     </form>

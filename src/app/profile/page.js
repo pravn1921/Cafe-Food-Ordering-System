@@ -2,10 +2,11 @@
 import EditableImage from "@/components/layout/EditableImage";
 import UserForm from "@/components/layout/UserForm";
 import UserTabs from "@/components/layout/UserTabs";
-import {useSession} from "next-auth/react";
-import {redirect} from "next/navigation";
-import {useEffect, useState} from "react";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { MutatingDots } from "react-loader-spinner";
 
 export default function ProfilePage() {
   const session = useSession();
@@ -13,7 +14,7 @@ export default function ProfilePage() {
   const [user, setUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [profileFetched, setProfileFetched] = useState(false);
-  const {status} = session;
+  const { status } = session;
 
   useEffect(() => {
     if (status === 'authenticated') {
@@ -33,7 +34,7 @@ export default function ProfilePage() {
     const savingPromise = new Promise(async (resolve, reject) => {
       const response = await fetch('/api/profile', {
         method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
       if (response.ok)
@@ -51,7 +52,19 @@ export default function ProfilePage() {
   }
 
   if (status === 'loading' || !profileFetched) {
-    return 'Loading...';
+    return <div className="h-96 flex items-center justify-center ">
+      <MutatingDots
+      visible={true}
+      height="100"
+      width="100"
+      color="#0074B7"
+      secondaryColor="#0074B7"
+      radius="12"
+      ariaLabel="mutating-dots-loading"
+      wrapperStyle={{}}
+      wrapperClass=""
+    />
+      </div>;
   }
 
   if (status === 'unauthenticated') {

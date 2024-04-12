@@ -16,7 +16,7 @@ function AuthLinks({status, userName}) {
         </Link>
         <button
           onClick={() => signOut()}
-          className="bg-primary rounded-full text-white px-6 py-2 border-2">
+          className="bg-primary rounded-full text-white px-6 py-2 border-2 font-sans">
           Sign Out
         </button>
       </>
@@ -25,8 +25,8 @@ function AuthLinks({status, userName}) {
   if (status === 'unauthenticated') {
     return (
       <>
-        <Link href={'/login'}>Sign In</Link>
-        <Link href={'/register'} className="bg-primary rounded-full text-white px-8 py-2 border-2">
+        <Link href={'/login'} className="font-sans font-bold">Sign In</Link>
+        <Link href={'/register'} className="bg-primary rounded-full text-white px-8 py-2 border-2 font-sans font-bold">
           Sign Up
         </Link>
       </>
@@ -80,7 +80,7 @@ export default function Header() {
         <Link className="text-primary font-semibold text-2xl" href="/">
           <Image src={'/bflogo.png'} width={180} height={180} className="p-2" alt="home"/>
         </Link>
-        <nav className="flex items-center gap-x-14 ml-[85px] text-gray-500 font-extrabold font-sans text-lg">
+        <nav className="flex items-center gap-x-14 ml-[85px] text-gray-500 font-extrabold font-sans text-lg rounded-full shadow-md py-3 px-10 bg-blue-50">
           <Link href={'/'} className="hover:text-primary hover:border-b-2 hover:border-primary duration-100">Home</Link>
           <Link href={'/menu'} className="hover:text-primary hover:border-b-2 hover:border-primary duration-100">Menu Items</Link>
           <Link href={'/contact'} className="hover:text-primary hover:border-b-2 hover:border-primary duration-100">Contact</Link>

@@ -6,11 +6,12 @@ import CartProduct from "@/components/menu/CartProduct";
 import { useProfile } from "@/components/UseProfile";
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { MutatingDots } from "react-loader-spinner";
 
 export default function CartPage() {
   const { cartProducts, removeCartProduct } = useContext(CartContext);
   const [address, setAddress] = useState({});
-  const { data: profileData } = useProfile();
+  const { loading, data: profileData } = useProfile();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -62,6 +63,22 @@ export default function CartPage() {
         }
       });
     });
+
+    if(loading){
+      return <div className="h-96 flex items-center justify-center ">
+      <MutatingDots
+      visible={true}
+      height="100"
+      width="100"
+      color="#0074B7"
+      secondaryColor="#0074B7"
+      radius="12"
+      ariaLabel="mutating-dots-loading"
+      wrapperStyle={{}}
+      wrapperClass=""
+    />
+      </div>;
+    }
 
     await toast.promise(promise, {
       loading: 'Preparing your order...',

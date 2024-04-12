@@ -39,14 +39,13 @@ export default function MenuItemPriceProps({name,addLabel,props,setProps}) {
         {!isOpen && (
           <ChevronDown />
         )}
-        <span>{name}</span>
-        <span>({props?.length})</span>
+        <span className="text-gray-500">{name}</span>
       </button>
       <div className={isOpen ? 'block' : 'hidden'}>
         {props?.length > 0 && props.map((size,index) => (
           <div key={index} className="flex items-end gap-2">
             <div>
-              <label>Name</label>
+              <label className="py-2 inline-flex items-center gap-2 font-semibold">Name</label>
               <input type="text"
                      placeholder="Size name"
                      value={size.name}
@@ -54,7 +53,7 @@ export default function MenuItemPriceProps({name,addLabel,props,setProps}) {
               />
             </div>
             <div>
-              <label>Extra</label>
+              <label className="py-2 inline-flex items-center gap-2 font-semibold">Extra</label>
               <input type="text" placeholder="Extra price"
                      value={size.price}
                      onChange={ev => editProp(ev, index, 'price')}
@@ -63,7 +62,7 @@ export default function MenuItemPriceProps({name,addLabel,props,setProps}) {
             <div>
               <button type="button"
                       onClick={() => removeProp(index)}
-                      className="bg-white mb-2 px-2">
+                      className="bg-white mb-2 px-2 hover:bg-primary hover:text-white">
                 <Trash />
               </button>
             </div>
@@ -72,8 +71,7 @@ export default function MenuItemPriceProps({name,addLabel,props,setProps}) {
         <button
           type="button"
           onClick={addProp}
-          className="bg-white items-center">
-          <Plus className="w-4 h-4" />
+          className="items-center w-44 mx-auto rounded-full bg-primary text-white mt-2">
           <span>{addLabel}</span>
         </button>
       </div>

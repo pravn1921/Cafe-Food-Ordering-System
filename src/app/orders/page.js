@@ -1,15 +1,16 @@
 'use client';
 import SectionHeaders from "@/components/layout/SectionHeaders";
 import UserTabs from "@/components/layout/UserTabs";
-import {useProfile} from "@/components/UseProfile";
-import {dbTimeForHuman} from "@/libs/datetime";
+import { useProfile } from "@/components/UseProfile";
+import { dbTimeForHuman } from "@/libs/datetime";
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import { MutatingDots } from "react-loader-spinner";
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState([]);
   const [loadingOrders, setLoadingOrders] = useState(true);
-  const {loading, data:profile} = useProfile();
+  const { loading, data: profile } = useProfile();
 
   useEffect(() => {
     fetchOrders();
@@ -25,12 +26,38 @@ export default function OrdersPage() {
     })
   }
 
+  if (loading) {
+    return <div className="h-96 flex items-center justify-center ">
+      <MutatingDots
+        visible={true}
+        height="100"
+        width="100"
+        color="#0074B7"
+        secondaryColor="#0074B7"
+        radius="12"
+        ariaLabel="mutating-dots-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+      />
+    </div>;
+  }
+
   return (
     <section className="mt-8 max-w-2xl mx-auto">
       <UserTabs isAdmin={profile.admin} />
       <div className="mt-8">
         {loadingOrders && (
-          <div>Loading orders...</div>
+          <div><MutatingDots
+            visible={true}
+            height="100"
+            width="100"
+            color="#0074B7"
+            secondaryColor="#0074B7"
+            radius="12"
+            ariaLabel="mutating-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          /></div>
         )}
         {orders?.length > 0 && orders.map(order => (
           <div
@@ -56,8 +83,8 @@ export default function OrdersPage() {
               </div>
             </div>
             <div className="justify-end flex gap-2 items-center whitespace-nowrap">
-              <Link href={"/orders/"+order._id} className="button">
-                Show order
+              <Link href={"/orders/" + order._id} className="button">
+                View
               </Link>
             </div>
           </div>

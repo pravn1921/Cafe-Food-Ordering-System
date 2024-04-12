@@ -5,6 +5,7 @@ import {useProfile} from "@/components/UseProfile";
 import {useParams} from "next/navigation";
 import {useEffect, useState} from "react";
 import toast from "react-hot-toast";
+import { MutatingDots } from "react-loader-spinner";
 
 export default function EditUserPage() {
   const {loading, data} = useProfile();
@@ -41,7 +42,19 @@ export default function EditUserPage() {
   }
 
   if (loading) {
-    return 'Loading user profile...';
+    return <div className="h-96 flex items-center justify-center ">
+    <MutatingDots
+    visible={true}
+    height="100"
+    width="100"
+    color="#0074B7"
+    secondaryColor="#0074B7"
+    radius="12"
+    ariaLabel="mutating-dots-loading"
+    wrapperStyle={{}}
+    wrapperClass=""
+  />
+    </div>;
   }
 
   if (!data.admin) {
