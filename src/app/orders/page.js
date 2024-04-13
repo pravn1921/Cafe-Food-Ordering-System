@@ -62,7 +62,7 @@ export default function OrdersPage() {
         {orders?.length > 0 && orders.map(order => (
           <div
             key={order._id}
-            className="bg-gray-100 mb-2 p-4 rounded-lg flex flex-col md:flex-row items-center gap-6">
+            className="bg-gray-100 mb-2 p-4 rounded-lg flex flex-col md:flex-row items-center gap-6 border border-primary">
             <div className="grow flex flex-col md:flex-row items-center gap-6">
               <div>
                 <div className={
@@ -74,7 +74,7 @@ export default function OrdersPage() {
               </div>
               <div className="grow">
                 <div className="flex gap-2 items-center mb-1">
-                  <div className="grow">{order.userEmail}</div>
+                  <div className="grow text-primary font-extrabold text-lg">{order.userEmail}</div>
                   <div className="text-gray-500 text-sm">{dbTimeForHuman(order.createdAt)}</div>
                 </div>
                 <div className="text-gray-500 text-xs">

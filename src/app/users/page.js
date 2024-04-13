@@ -45,8 +45,8 @@ export default function UsersPage() {
         {users?.length > 0 && users.map(user => (
           <div
             key={user._id}
-            className="bg-gray-100 rounded-lg mb-2 p-1 px-4 flex items-center gap-4">
-            <div className="flex flex-col">
+            className="bg-gray-100 rounded-lg mb-2 p-1 px-4 flex items-center gap-4 border border-primary">
+            <div className="flex flex-col gap-y-2">
               <div className="text-primary font-extrabold font-sans text-lg">
                 {!!user.name && (<span>{user.name}</span>)}
                 {!user.name && (<span className="italic">No name</span>)}
