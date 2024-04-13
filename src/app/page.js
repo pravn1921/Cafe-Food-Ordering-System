@@ -3,6 +3,7 @@ import Hero from "@/components/layout/Hero";
 import HomeMenu from "@/components/layout/HomeMenu";
 import SectionHeaders from "@/components/layout/SectionHeaders";
 import Image from "next/image";
+import Reviews from "@/components/layout/Reviews";
 
 export default function Home() {
   return (
@@ -60,6 +61,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Reviews />
     </>
   )
 }

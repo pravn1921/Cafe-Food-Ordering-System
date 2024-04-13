@@ -25,6 +25,7 @@
     "react-icons": "^5.0.1",
     "react-loader-spinner": "^6.1.6",
     "stripe": "^14.3.0",
+    "swiper": "^11.1.1",
     "uniqid": "^5.4.0",
     "webfontloader": "^1.6.28"
   },

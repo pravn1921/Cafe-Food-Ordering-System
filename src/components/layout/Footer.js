@@ -132,7 +132,7 @@ export default function Footer() {
                             </li>
                         </ul>
                         <p className="mt-4 text-xs text-gray-500 sm:mt-0">
-                            &copy; 2022. Blue Forest. All rights reserved.
+                            &copy; 2024. Blue Forest. All rights reserved.
                         </p>
                     </div>
                 </div>

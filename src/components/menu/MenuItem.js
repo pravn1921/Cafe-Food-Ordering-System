@@ -60,7 +60,7 @@ export default function MenuItem(menuItem) {
             onClick={ev => ev.stopPropagation()}
             className="my-8 bg-white p-2 rounded-lg max-w-md">
             <div
-              className="overflow-y-scroll p-2"
+              className=""
               style={{maxHeight:'calc(100vh - 100px)'}}>
               <Image
                 src={image}
@@ -73,11 +73,11 @@ export default function MenuItem(menuItem) {
               </p>
               {sizes?.length > 0 && (
                 <div className="py-2">
-                  <h3 className="text-center text-gray-700">Size</h3>
+                  <h3 className="text-center text-gray-700 font-semibold">Size</h3>
                   {sizes.map(size => (
                     <label
                       key={size._id}
-                      className="flex items-center gap-2 p-4 border rounded-md mb-1">
+                      className="flex items-center gap-2 p-4 border rounded-md mb-1 font-semibold text-md text-gray-500">
                       <input
                         type="radio"
                         onChange={() => setSelectedSize(size)}
@@ -90,32 +90,30 @@ export default function MenuItem(menuItem) {
               )}
               {extraIngredientPrices?.length > 0 && (
                 <div className="py-2">
-                  <h3 className="text-center text-gray-700">Add Extras?</h3>
+                  <h3 className="text-center text-gray-700 font-semibold">Add Extras?</h3>
                   {extraIngredientPrices.map(extraThing => (
                     <label
                       key={extraThing._id}
-                      className="flex items-center gap-2 p-4 border rounded-md mb-1">
+                      className="flex items-center gap-2 p-4 border rounded-md mb-1 font-semibold text-gray-500">
                       <input
                         type="checkbox"
                         onChange={ev => handleExtraThingClick(ev, extraThing)}
                         checked={selectedExtras.map(e => e._id).includes(extraThing._id)}
-                        name={extraThing.name} />
+                        name={extraThing.name} 
+                        />
                       {extraThing.name} + ₹{extraThing.price}
                     </label>
                   ))}
                 </div>
               )}
-              <FlyingButton
-                targetTop={'5%'}
-                targetLeft={'95%'}
-                src={image}>
+              <button className="bg-primary text-white w-72 mx-auto rounded-full">
                 <div className="primary sticky bottom-2"
                      onClick={handleAddToCartButtonClick}>
                   Add to cart ₹{selectedPrice}
                 </div>
-              </FlyingButton>
+              </button>
               <button
-                className="mt-2"
+                className="mt-2 w-72 mx-auto border-2 rounded-full"
                 onClick={() => setShowPopup(false)}>
                 Cancel
               </button>
