@@ -102,7 +102,7 @@ export default function CartPage() {
         Cart
       </div>
 
-        <div className="mt-10 grid gap-8 grid-cols-2 mr-2">
+        <div className="mt-10 grid gap-8 w-[600px] mx-auto">
           <div className="p-5 rounded-xl border-2  bg-gray-100">
             {cartProducts?.length === 0 && (
               <div>No products in your shopping cart</div>
@@ -142,7 +142,7 @@ export default function CartPage() {
               <button type="submit" className="w-44 rounded-full mt-4">Pay&nbsp; ₹{subtotal + 30}</button>
             </div>
           </form>
-        </div>
+         </div>
         </div>
     </section>
   );

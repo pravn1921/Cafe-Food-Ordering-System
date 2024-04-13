@@ -39,14 +39,28 @@ export default function OrderPage() {
   }
 
   const cancelOrder = () => {
-    // Add your cancel order logic here
-    // For example, you can make an API call to cancel the order
-
-    // After the order is canceled, you can clear the cart and redirect the user to the homepage
-    clearCart();
-    window.location.href = '/';
+    fetch(`/api/cancel-order/${id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ orderId: id }),
+    })
+    .then(response => {
+      if (response.ok) {
+        // Order cancellation successful
+        clearCart();
+        window.location.href = '/';
+      } else {
+        // Handle error if order cancellation fails
+        console.error('Failed to cancel order');
+      }
+    })
+    .catch(error => {
+      console.error('Error cancelling order:', error);
+    });
   };
-
+  
   const showCancelConfirmationModal = () => {
     setShowCancelConfirmation(true);
   };
@@ -65,7 +79,7 @@ export default function OrderPage() {
         </div>
       </div>
       {loadingOrder && (
-        <div className="h-96 flex items-center justify-center ">
+        <div className="h-96 flex items-center justify-center">
         <MutatingDots
         visible={true}
         height="100"
